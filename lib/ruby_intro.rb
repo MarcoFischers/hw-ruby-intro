@@ -46,14 +46,23 @@ end
 
 def hello(name)
   # YOUR CODE HERE
+  return "Hello, " + name.to_str
 end
 
 def starts_with_consonant? s
   # YOUR CODE HERE
+  char = s.to_str.chr.downcase
+  return !(char =~ /[a-z]/).nil? && (char =~ /[aeiou]/).nil?
 end
 
 def binary_multiple_of_4? s
   # YOUR CODE HERE
+  str = s.to_str
+  unless str.gsub(/[01]/,"") == ""
+    return FALSE
+  else
+    return str.end_with?("00","0")
+  end
 end
 
 # Part 3
