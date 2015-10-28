@@ -46,7 +46,7 @@ end
 
 def hello(name)
   # YOUR CODE HERE
-  return "Hello, " + name.to_str
+  return 'Hello, ' + name.to_str
 end
 
 def starts_with_consonant? s
@@ -58,10 +58,10 @@ end
 def binary_multiple_of_4? s
   # YOUR CODE HERE
   str = s.to_str
-  unless str.gsub(/[01]/,"") == ""
+  if (str =~ /^[01]+$/).nil?
     return FALSE
   else
-    return str.end_with?("00","0")
+    return str == '0' || str.end_with?('00')
   end
 end
 
@@ -69,4 +69,19 @@ end
 
 class BookInStock
 # YOUR CODE HERE
+  attr_accessor :isbn, :price
+  
+  def initialize(isbn, price)
+    
+    raise(ArgumentError, 'invalid ISBN') if isbn == ''
+    raise(ArgumentError, 'invalid price') if !price.real? || price <= 0
+    
+    @isbn = isbn
+    @price = price
+  end
+  
+  def price_as_string
+    return sprintf('$%.2f',price)
+  end
+  
 end
